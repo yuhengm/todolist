@@ -28,7 +28,7 @@ const defaultItems = [item1, item2, item3];
 // new list documents for different pages
 const listSchema = {
   name: String,
-  items: [itemSchema],
+  items: [itemSchema]
 };
 const List = mongoose.model("List", listSchema);
 
@@ -39,9 +39,9 @@ app.get("/", function (req, res) {
   Item.find({}, function (err, foundItems) {
     // If nothing in default list, add default items
     if (foundItems.length === 0) {
-      Item.insertMany(defaultItems, function (err) {
-        if (err) {
-          console.log(err);
+      Item.insertMany(defaultItems, function(error) {
+        if (error) {
+          console.log(error);
         } else {
           console.log("successfully added default items");
         }
@@ -50,7 +50,7 @@ app.get("/", function (req, res) {
     } else {
       res.render("list", {
         listTitle: date.getDate(),
-        newListItems: foundItems,
+        newListItems: foundItems
       });
     }
   });
@@ -70,6 +70,7 @@ app.get("/:customListName", function (req, res) {
   List.findOne({ name: customListName }, function (err, foundList) {
     if (!err) {
       if (!foundList) {
+        // create a new list
         const list = new List({
           name: customListName,
           items: defaultItems,
@@ -77,6 +78,7 @@ app.get("/:customListName", function (req, res) {
         list.save();
         res.redirect("/" + customListName);
       } else {
+        // show an existing list
         res.render("list", {
           listTitle: foundList.name,
           newListItems: foundList.items,
@@ -96,10 +98,14 @@ app.post("/", function (req, res) {
     name: inputItem,
   });
 
-  if (listName === date.getDate()) {
+  const today = date.getDate();
+
+  if (listName === today) {
     addedItem.save();
     res.redirect("/");
   } else {
+    console.log(today);
+    console.log(listName);
     List.findOne({ name: listName }, function (err, foundList) {
       foundList.items.push(addedItem);
       foundList.save();
@@ -113,13 +119,15 @@ app.post("/", function (req, res) {
 app.post("/delete", function (req, res) {
   const checkedItemID = req.body.checkbox;
   const listName = req.body.listName;
+  const today = date.getDate();
 
-  if (listName === date.getDate()) {
+  if (listName === today) {
     Item.findByIdAndRemove(checkedItemID, function (err) {
       if (!err) {
         console.log("Successfully deleted item.");
         res.redirect("/");
       }
+
     });
   } else {
     List.findOneAndUpdate(
@@ -129,7 +137,8 @@ app.post("/delete", function (req, res) {
         if (!err) {
           res.redirect("/" + listName);
         }
-      });
+      }
+    );
   }
 });
 

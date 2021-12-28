@@ -4,18 +4,21 @@
     </div>
 
     <div class="box">
-      <ul>
+
         <!-- Interesting way of writing for-loop using EJS -->
         <% for (var item of newListItems) { %>
+
           <form action="/delete" method="post">
             <div class="item">
               <!-- bind checkbox with item _id for database manipulations. value is accessed by name -->
               <input type="checkbox" name="checkbox" value=<%=item._id %> onchange="this.form.submit()" />
               <p><%= item.name %></p>
             </div>
+            <!-- Needed to retrieve title name! -->
+            <input type="hidden" name="listName" value="<%= listTitle %>"></input>
           </form>
         <% } %>
-      </ul>
+
       <form class="item" action="/" method="post">
         <input
           type="text"
@@ -23,9 +26,10 @@
           placeholder="New Item"
           autocomplete="off"
         />
-        <button type="submit" name="list" value=<%=listTitle %> >
+        <button type="submit" name="list" value="<%=listTitle %>" >
           <i class="fa fa-sm fa-plus" aria-hidden="true"></i>
         </button>
       </form>
     </div>
+
 <%- include("footer") -%> 
