@@ -142,6 +142,11 @@ app.post("/delete", function (req, res) {
   }
 });
 
+app.get("/getJson", function (req, res) {
+  // If it's not showing up, just use req.body to see what is actually being passed.
+  console.log(req.body.selectpicker);
+});
+
 app.listen(3000, function () {
   console.log("Server listening to port 3000.");
 });
