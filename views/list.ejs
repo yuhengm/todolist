@@ -1,0 +1,28 @@
+<%- include("header") -%> 
+    <div class="box" id="heading">
+      <h1><%=listTitle%></h1>
+    </div>
+
+    <div class="box">
+      <ul>
+        <!-- Interesting way of writing for-loop using EJS -->
+        <% for (var item of newListItems) { %>
+        <div class="item">
+          <input type="checkbox" />
+          <p><%= item %></p>
+        </div>
+        <% } %>
+      </ul>
+      <form class="item" action="/" method="post">
+        <input
+          type="text"
+          name="newItem"
+          placeholder="New Item"
+          autocomplete="off"
+        />
+        <button type="submit" name="list" value=<%=listTitle %> >
+          <i class="fa fa-sm fa-plus" aria-hidden="true"></i>
+        </button>
+      </form>
+    </div>
+<%- include("footer") -%> 
