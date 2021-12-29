@@ -23,6 +23,35 @@ h1 {
   text-align: center;
 }
 
+.heading-box {
+  margin-bottom: 0;
+}
+
+.list-category {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto;
+  background: transparent;
+}
+
+.link-btn {
+  font-family: "Sriracha", cursive;
+  color: #407088;
+  border: none;
+  text-align: center;
+  line-height: 1;
+  font-size: 1.1rem;
+  background-color : transparent;
+  outline: none;
+}
+
+.link-btn:hover {
+  transform: scale(1.1);
+  transition: 0.3s ease-out;
+}
+
 .item {
   min-height: 70px;
   display: flex;
@@ -70,7 +99,7 @@ form.item {
 
 .submit-btn:hover {
   transform: scale(1.1);
-  transition: 0.2s ease-out;
+  transition: 0.3s ease-out;
 }
 
 input[type="text"] {
@@ -103,17 +132,11 @@ footer {
 }
 
 .about-btn {
-  font-family: "Sriracha", cursive;
   color: white;
-  border: none;
-  text-align: center;
-  line-height: 1;
-  font-size: 1.1rem;
-  background-color : transparent;
-  outline: none;
 }
 
 .about-btn:hover {
   color: #407088;
-  transition: all .5s ease;
+  transform: none;
+  transition: 0.5s ease;
 }

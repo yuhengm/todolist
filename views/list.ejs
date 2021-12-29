@@ -1,6 +1,21 @@
 <%- include("header") -%> 
-    <div class="box" id="heading">
+    <div class="box heading-box" id="heading">
       <h1><%=listTitle%></h1>
+    </div>
+
+    <div class="list-category">
+      <form action="/" method="get">
+        <button type="submit" class="link-btn">Today</button>
+      </form>
+      <form action="/home" method="get">
+        <button type="submit" class="link-btn">Home</button>
+      </form>
+      <form action="/work" method="get">
+        <button type="submit" class="link-btn">Work</button>
+      </form>
+      <form action="/other" method="get">
+        <button type="submit" class="link-btn">Other</button>
+      </form>
     </div>
 
     <div class="box">
