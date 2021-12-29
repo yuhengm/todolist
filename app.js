@@ -11,17 +11,17 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-mongoose.connect(
-  "mongodb+srv://admin-yhm:970823@cluster0.mzbwj.mongodb.net/todolistDB",
-  {
-    useNewUrlParser: true,
-  }
-);
+// mongoose.connect(
+//   "mongodb+srv://admin-yhm:970823@cluster0.mzbwj.mongodb.net/todolistDB",
+//   {
+//     useNewUrlParser: true,
+//   }
+// );
 
 // local connection
-// mongoose.connect("mongodb://127.0.0.1:27017/todolistDB", {
-//   useNewUrlParser: true,
-// });
+mongoose.connect("mongodb://127.0.0.1:27017/todolistDB", {
+  useNewUrlParser: true,
+});
 
 // Main list items
 const itemSchema = { name: String };

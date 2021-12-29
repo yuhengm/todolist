@@ -8,9 +8,8 @@
   "author": "Yuheng",
   "license": "ISC",
   "engines": {
-    "node": "12.18.3"
+    "node": "17.3.0"
   },
-
   "dependencies": {
     "body-parser": "^1.19.1",
     "ejs": "^3.1.6",
