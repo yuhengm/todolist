@@ -11,9 +11,17 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://127.0.0.1:27017/todolistDB", {
-  useNewUrlParser: true,
-});
+mongoose.connect(
+  "mongodb+srv://admin-yhm:970823@cluster0.mzbwj.mongodb.net/todolistDB",
+  {
+    useNewUrlParser: true,
+  }
+);
+
+// local connection
+// mongoose.connect("mongodb://127.0.0.1:27017/todolistDB", {
+//   useNewUrlParser: true,
+// });
 
 // Main list items
 const itemSchema = { name: String };
@@ -155,6 +163,9 @@ app.post("/delete", function (req, res) {
   }
 });
 
-app.listen(3000, function () {
-  console.log("Server listening to port 3000.");
+/* Set up server */
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Our app is running on port ${PORT}`);
 });
