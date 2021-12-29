@@ -140,3 +140,31 @@ footer {
   transform: none;
   transition: 0.5s ease;
 }
+
+.about-container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-title {
+  color: black;
+  margin-bottom: 0;
+}
+
+ul{
+  margin: 0;
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 200;
+  color: #407088;
+}
+
+hr {
+  max-width: 500px;
+  border: 0;
+  height: 1px;
+  background: white;
+  background-image: linear-gradient(to right, #F9C5D5, #F999B7, #F9C5D5);
+}
