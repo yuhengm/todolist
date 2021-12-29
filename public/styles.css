@@ -57,7 +57,7 @@ form.item {
   margin-left: 20px;
 }
 
-button {
+.submit-btn {
   min-height: 50px;
   width: 50px;
   border-radius: 50%;
@@ -68,7 +68,7 @@ button {
   border-width: 0;
 }
 
-button:hover {
+.submit-btn:hover {
   transform: scale(1.1);
   transition: 0.2s ease-out;
 }
@@ -99,4 +99,21 @@ input[type="text"]:focus {
 footer {
   color: white;
   text-align: center;
+  font-size: 1rem;
+}
+
+.about-btn {
+  font-family: "Sriracha", cursive;
+  color: white;
+  border: none;
+  text-align: center;
+  line-height: 1;
+  font-size: 1.1rem;
+  background-color : transparent;
+  outline: none;
+}
+
+.about-btn:hover {
+  color: #407088;
+  transition: all .5s ease;
 }
