@@ -155,10 +155,6 @@ app.post("/delete", function (req, res) {
   }
 });
 
-app.post("/failure", function (req, res) { 
-  res.redirect("/");
-});
-
 app.listen(3000, function () {
   console.log("Server listening to port 3000.");
 });
