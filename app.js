@@ -11,6 +11,9 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+const uri = process.env.MONGODB_URI;
+mongoose.connect(uri);
+
 // mongoose.connect(
 //   "mongodb+srv://admin-yhm:970823@cluster0.mzbwj.mongodb.net/todolistDB",
 //   {
