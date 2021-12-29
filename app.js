@@ -62,6 +62,11 @@ app.get("/about", function (req, res) {
   res.render("about");
 });
 
+app.get("/fail", function (req, res) {
+  res.render("failure");
+});
+
+
 /* Custom-defined route */
 
 app.get("/:customListName", function (req, res) {
@@ -84,9 +89,12 @@ app.get("/:customListName", function (req, res) {
           newListItems: foundList.items,
         });
       }
+    } else {
+      res.redirect("/fail");
     }
   });
 });
+
 
 /* Handle add post requests */
 
@@ -107,9 +115,13 @@ app.post("/", function (req, res) {
     console.log(today);
     console.log(listName);
     List.findOne({ name: listName }, function (err, foundList) {
-      foundList.items.push(addedItem);
-      foundList.save();
-      res.redirect("/" + listName);
+      if (!err) {
+        foundList.items.push(addedItem);
+        foundList.save();
+        res.redirect("/" + listName);
+      } else {
+        res.redirect("/fail");
+      }
     });
   }
 });
@@ -126,8 +138,9 @@ app.post("/delete", function (req, res) {
       if (!err) {
         console.log("Successfully deleted item.");
         res.redirect("/");
+      } else {
+        res.redirect("/fail");
       }
-
     });
   } else {
     List.findOneAndUpdate(
@@ -140,6 +153,10 @@ app.post("/delete", function (req, res) {
       }
     );
   }
+});
+
+app.post("/failure", function (req, res) { 
+  res.redirect("/");
 });
 
 app.listen(3000, function () {
