@@ -7,3 +7,7 @@ User can access __Today__, __Home__, __Work__, and __Other__ categories of your 
 ## Demo
 
 ![image](/public/demo.png)
+
+## Screenshot of the __about__ page
+
+![image](/public/about.png)
